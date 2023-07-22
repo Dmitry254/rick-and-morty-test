@@ -57,8 +57,8 @@ export default {
           this.nextPage = res.data.info.next;
         })
         .catch(function (error){
-          console.log(error.response)
-          alert("Wrong filter")
+          console.log(error.response);
+          alert("Wrong filter");
         })
     },
     getNextCharacters() {
@@ -77,8 +77,8 @@ export default {
               this.nextPage = res.data.info.next;
             })
             .catch(function (error){
-              console.log(error.response)
-              alert("Wrong filter")
+              console.log(error.response);
+              alert("Wrong filter");
             })
           this.forceRerender();
         }

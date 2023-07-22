@@ -1,0 +1,63 @@
+.episodeCard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.episodeInfo {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.episodeName {
+  top: 0;
+  left: 0;
+  font-size: 2vw;
+  margin: 0 0 0 0;
+}
+.episodeDate {
+  top: 0;
+  right: 0;
+  font-size: 2vw;
+  margin: 0 0 0 0;
+}
+.singleCharImg {
+  width: 30%;
+}
+.episodeChars {
+  position: relative;
+  width: 95%;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin: auto;
+}
+.episodeCharsTitle {
+  font-size: 2vw;
+  text-align: center;
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+.episodeCharCard {
+  position: relative;
+  height: 93%;
+  width: 90%;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0.1rem 0.2rem 1rem gray;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
+}
+.episodeCharImg {
+  width: 100%;
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+.episodeCharName {
+  text-align: center;
+  margin: 0 0 0 0;
+  font-size: 1.3rem;
+}

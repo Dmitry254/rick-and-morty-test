@@ -1,10 +1,12 @@
 <template>
-
+  <div>
+    {{this.$route.params}}
+  </div>
 </template>
 
 <script>
 export default {
-  name: "episode"
+  name: "character"
 }
 </script>
 

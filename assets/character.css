@@ -1,0 +1,20 @@
+.singleCharCard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.singleCharImg {
+  width: 30%;
+}
+.singleCharBio {
+  margin-left: 2%;
+}
+.charName {
+  font-size: 3rem;
+}
+.charSpecies {
+  font-size: 3rem;
+}
+.charLocation {
+  font-size: 3rem;
+}
