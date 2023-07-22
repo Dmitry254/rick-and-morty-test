@@ -1,0 +1,38 @@
+.body {
+    background-color: #a3f5e0;
+}
+.charactersMain {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.charCardsList {
+    position: relative;
+    font-family: 'Arial';
+    width: 98%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: auto;
+}
+.charCard {
+    position: relative;
+    height: 96%;
+    width: 95%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0.2rem 0.3rem 1rem gray;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 6%;
+}
+.charImg {
+    width: 100%;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+.descriptionP {
+    text-align: center;
+    margin: 0 0 0 0;
+    font-size: 1rem;
+}
