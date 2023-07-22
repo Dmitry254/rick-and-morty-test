@@ -6,6 +6,26 @@
     width: 100%;
     height: 100%;
 }
+.charactersFilter {
+  position: relative;
+  width: 97%;
+  height: 5%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 3%;
+}
+.inputFilter {
+  width: 10%;
+  height: 100%;
+}
+.selectFilter {
+  width: 6%;
+  height: 100%;
+}
+.buttonFilter {
+  width: 5%;
+  height: 100%;
+}
 .charCardsList {
     position: relative;
     font-family: 'Arial';
@@ -35,4 +55,11 @@
     text-align: center;
     margin: 0 0 0 0;
     font-size: 1rem;
+}
+.episodes {
+  display: flex;
+  justify-content: center;
+}
+.episodeNumbers {
+  margin-left: 2%;
 }

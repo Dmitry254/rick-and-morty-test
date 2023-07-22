@@ -1,12 +1,26 @@
 <template>
   <div class="charactersMain">
+    <div class="charactersFilter">
+      <input id="inputFilter" class="inputFilter">
+      <select id="selectFilter" class="selectFilter">
+        <option value="" selected="selected">Any</option>
+        <option value="alive">Alive</option>
+        <option value="dead">Dead</option>
+        <option value="unknown">Unknown</option>
+      </select>
+      <button class="buttonFilter" @click="setFilters()">Search</button>
+    </div>
     <div class="charCardsList" key="charCardsListKey">
       <template v-for="item in this.charData">
         <div class="charCard">
           <img class="charImg" v-bind:src=item.image>
-          <p class="descriptionP">{{ item.name }}</p>
+          <a class="descriptionP">{{ item.name }}</a>
           <p class="descriptionP">{{ item.species }}</p>
-          <p class="descriptionP">{{ item.location.name }}</p>
+          <a class="descriptionP">{{ item.location.name }}</a>
+          <div class="episodes">
+            <p class="descriptionP">Episodes:</p>
+            <a class="episodeNumbers" v-for="episode in item.episode.slice(0, 5)">{{ episode.slice(40) }}</a>
+          </div>
         </div>
       </template>
     </div>
@@ -15,7 +29,6 @@
 
 <script>
 import axios from 'axios'
-import "@/assets/index.css";
 
 export default {
   name: "index",
@@ -24,7 +37,8 @@ export default {
       charData: [],
       firstPage: "https://rickandmortyapi.com/api/character/?page=1",
       nextPage: "",
-      componentKey: 0,
+      filterParams: {name: "", status: ""},
+      componentKey: 0
     }
   },
   beforeMount() {
@@ -36,11 +50,15 @@ export default {
   methods: {
     getFirstCharacters() {
       axios
-        .get(this.firstPage)
+        .get(this.firstPage, {params: this.filterParams})
         .then(res => {
           this.charData = res.data.results;
           console.log(res);
           this.nextPage = res.data.info.next;
+        })
+        .catch(function (error){
+          console.log(error.response)
+          alert("Wrong filter")
         })
     },
     getNextCharacters() {
@@ -48,15 +66,19 @@ export default {
         if (this.nextPage === null) {
           return;
         }
-        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight + 20 > document.documentElement.offsetHeight;
         if (bottomOfWindow) {
           axios
-            .get(this.nextPage)
+            .get(this.nextPage, {params: this.filterParams})
             .then(res => {
               this.charData = this.charData.concat(res.data.results);
               console.log(this.charData);
               console.log(this.nextPage);
               this.nextPage = res.data.info.next;
+            })
+            .catch(function (error){
+              console.log(error.response)
+              alert("Wrong filter")
             })
           this.forceRerender();
         }
@@ -64,6 +86,12 @@ export default {
     },
     forceRerender() {
       this.charCardsListKey += 1;
+    },
+    setFilters() {
+      this.nextPage = this.firstPage;
+      this.filterParams.name = document.getElementById("inputFilter").value;
+      this.filterParams.status = document.getElementById("selectFilter").value;
+      this.getFirstCharacters();
     }
   },
 
