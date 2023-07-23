@@ -1,10 +1,10 @@
 <template>
   <div class="singleCharCard">
-    <img class="singleCharImg" v-bind:src=this.charData.image>
+    <img class="singleCharImg" v-bind:src=this?.charData.image>
     <div class="singleCharBio">
-      <p class="charName">Name: {{ this.charData.name }}</p>
-      <p class="charSpecies">Species: {{ this.charData.species }}</p>
-      <a class="charLocation">Location: {{ this.charData.location.name }}</a>
+      <p class="charName">Name: {{ this?.charData.name }}</p>
+      <p class="charSpecies">Species: {{ this?.charData.species }}</p>
+      <a class="charLocation">Location: {{ this?.charData.location.name }}</a>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   name: "_id",
   data() {
     return {
-      charData: {image: "", name: "", species: "", location: {name: ""} },
+      charData: {image: "", name: "", species: "", location: {name: ""}},
       characterInfoLink: "https://rickandmortyapi.com/api/character/"
     }
   },

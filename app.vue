@@ -3,4 +3,3 @@
     <NuxtPage keepalive include="index"></NuxtPage>
   </NuxtLayout>
 </template>
-

@@ -8,23 +8,30 @@
 }
 .charactersFilter {
   position: relative;
-  width: 97%;
-  height: 5%;
+  display: flex;
+  width: 500px;
+  height: 5vh;
   margin-top: 1%;
   margin-bottom: 1%;
   margin-left: 3%;
 }
 .inputFilter {
-  width: 10%;
-  height: 100%;
+  font-size: 1.3rem;
+  width: 50%;
+  height: 86%;
+  margin-left: 2%;
 }
 .selectFilter {
-  width: 6%;
+  font-size: 1.3rem;
+  width: 25%;
   height: 100%;
+  margin-left: 2%;
 }
 .buttonFilter {
-  width: 5%;
+  font-size: 1.3rem;
+  width: 25%;
   height: 100%;
+  margin-left: 2%;
 }
 .charCardsList {
     position: relative;
@@ -62,4 +69,30 @@
 }
 .episodeNumbers {
   margin-left: 2%;
+}
+@media (width < 96em) {
+  .charCardsList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (width < 72em) {
+  .charCardsList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (width < 48em) {
+  .charCardsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charactersFilter {
+    width: 100%;
+  }
+}
+@media (width < 24em) {
+  .charCardsList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .charactersFilter {
+    width: 100%;
+  }
 }
