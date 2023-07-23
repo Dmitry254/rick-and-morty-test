@@ -11,7 +11,7 @@
       <button class="buttonFilter" @click="setFilters()">Search</button>
     </div>
     <div class="charCardsList" key="charCardsListKey">
-      <template v-for="item in this.charData">
+      <template v-for="item in this?.charData">
         <div class="charCard">
           <NuxtLink class="charImg" :to="'/character/' + item.id" >
             <img class="charImg" v-bind:src=item.image>
@@ -81,7 +81,7 @@ export default {
         if (this.nextPage === null) {
           return;
         }
-        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight + 20 > document.documentElement.offsetHeight;
+        let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
         if (bottomOfWindow) {
           axios
             .get(this.nextPage, {params: this.filterParams})

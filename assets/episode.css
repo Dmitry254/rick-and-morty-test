@@ -14,13 +14,13 @@
 .episodeName {
   top: 0;
   left: 0;
-  font-size: 2vw;
+  font-size: 2rem;
   margin: 0 0 0 0;
 }
 .episodeDate {
   top: 0;
   right: 0;
-  font-size: 2vw;
+  font-size: 2rem;
   margin: 0 0 0 0;
 }
 .singleCharImg {
@@ -35,7 +35,7 @@
   margin: auto;
 }
 .episodeCharsTitle {
-  font-size: 2vw;
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 1%;
   margin-top: 1%;
@@ -60,4 +60,44 @@
   text-align: center;
   margin: 0 0 0 0;
   font-size: 1.3rem;
+}
+
+@media screen and (max-width: 105em) {
+  .episodeChars {
+    grid-template-columns: repeat(7, 1fr);
+  }
+}
+@media screen and (max-width: 90em) {
+  .episodeChars {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media screen and (max-width: 75em) {
+  .episodeChars {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+@media screen and (max-width: 60em) {
+  .episodeChars {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .episodeInfo {
+    text-align: center;
+    display: block;
+  }
+}
+@media screen and (max-width: 45em) {
+  .episodeChars {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media screen and (max-width: 30em) {
+  .episodeChars {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 15em) {
+  .episodeChars {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
