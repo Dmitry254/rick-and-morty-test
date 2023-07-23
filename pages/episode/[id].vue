@@ -1,6 +1,5 @@
 <template>
   <div class="episodeCard">
-<!--    <img className="episodeImg" v-bind:src=this.charData.image>-->
     <div class="episodeInfo">
       <p class="episodeName">Episode {{this.$route.params.id}} - {{ this.episodeData.name }}</p>
       <p class="episodeDate">Air date: {{ this.episodeData.air_date }}</p>
@@ -9,8 +8,10 @@
     <div class="episodeChars">
       <template v-for="item in this.charactersData">
         <div class="episodeCharCard">
-          <img class="episodeCharImg" v-bind:src=item.image>
-          <a class="episodeCharName">{{ item.name }}</a>
+          <NuxtLink class="episodeCharImg" :to="'/character/' + item.id" >
+            <img class="episodeCharImg" v-bind:src=item.image>
+          </NuxtLink>
+          <NuxtLink class="episodeCharName" :to="'/character/' + item.id" >{{ item.name }}</NuxtLink>
         </div>
       </template>
     </div>
@@ -36,6 +37,7 @@ export default {
   },
   methods: {
     getEpisodeInfo() {
+      console.log(this.$route)
       axios
         .get(this.episodeInfoLink + this.$route.params.id)
         .then(res => {

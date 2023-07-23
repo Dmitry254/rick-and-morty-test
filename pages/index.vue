@@ -13,13 +13,17 @@
     <div class="charCardsList" key="charCardsListKey">
       <template v-for="item in this.charData">
         <div class="charCard">
-          <img class="charImg" v-bind:src=item.image>
-          <a class="descriptionP">{{ item.name }}</a>
+          <NuxtLink class="charImg" :to="'/character/' + item.id" >
+            <img class="charImg" v-bind:src=item.image>
+          </NuxtLink>
+          <NuxtLink class="descriptionP" :to="'/character/' + item.id">{{ item.name }}</NuxtLink>
           <p class="descriptionP">{{ item.species }}</p>
-          <a class="descriptionP">{{ item.location.name }}</a>
+          <p class="descriptionP">{{ item.location.name }}</p>
           <div class="episodes">
             <p class="descriptionP">Episodes:</p>
-            <a class="episodeNumbers" v-for="episode in item.episode.slice(0, 5)">{{ episode.slice(40) }}</a>
+            <template v-for="episode in item.episode.slice(0, 5)">
+              <NuxtLink class="episodeNumbers"  :to="'/episode/' + episode.slice(40)">{{ episode.slice(40) }}</NuxtLink>
+            </template>
           </div>
         </div>
       </template>
