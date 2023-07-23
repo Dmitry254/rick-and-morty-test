@@ -13,16 +13,16 @@
     <div class="charCardsList" key="charCardsListKey">
       <template v-for="item in this?.charData">
         <div class="charCard">
-          <NuxtLink class="charImg" :to="'/character/' + item.id" >
+          <NuxtLink class="charImg" :to="'/character/' + item.id">
             <img class="charImg" v-bind:src=item.image>
           </NuxtLink>
           <NuxtLink class="descriptionP" :to="'/character/' + item.id">{{ item.name }}</NuxtLink>
           <p class="descriptionP">{{ item.species }}</p>
-          <p class="descriptionP">{{ item.location.name }}</p>
+          <p class="descriptionP">{{ item.location?.name }}</p>
           <div class="episodes">
             <p class="descriptionP">Episodes:</p>
             <template v-for="episode in item.episode.slice(0, 5)">
-              <NuxtLink class="episodeNumbers"  :to="'/episode/' + episode.slice(40)">{{ episode.slice(40) }}</NuxtLink>
+              <NuxtLink class="episodeNumbers" :to="'/episode/' + episode.slice(40)">{{ episode.slice(40) }}</NuxtLink>
             </template>
           </div>
         </div>
@@ -34,7 +34,6 @@
 <script>
 import axios from 'axios'
 import {useFiltersStore} from "@/store/filters.js";
-import {useCharDataStore} from "@/store/characters-data.js";
 
 export default {
   name: "index",
@@ -45,21 +44,17 @@ export default {
       nextPage: "",
       filterParams: {name: "", status: ""},
       componentKey: 0,
-      filtersStore: useFiltersStore(),
-      charDataStore: useCharDataStore()
+      filtersStore: useFiltersStore()
     }
   },
   beforeMount() {
-    console.log(this.filtersStore.status);
-    console.log(this.charDataStore.storeNextPage);
-    console.log(this.charDataStore.storeCharData);
-
-    this.getFirstCharacters();
-
-  },
-  mounted() {
     document.getElementById("inputFilter").value = this.filtersStore.name;
     document.getElementById("selectFilter").value = this.filtersStore.status;
+    this.filterParams.name = this.filtersStore.name;
+    this.filterParams.status = this.filtersStore.status;
+    this.getFirstCharacters();
+  },
+  mounted() {
     this.getNextCharacters();
   },
   methods: {
@@ -69,9 +64,8 @@ export default {
         .then(res => {
           this.charData = res.data.results;
           this.nextPage = res.data.info.next;
-          this.charDataStore.addValueToStore(this.charData, this.nextPage);
         })
-        .catch(function (error){
+        .catch(function (error) {
           console.log(error.response);
           alert("Wrong filter");
         })
@@ -88,9 +82,8 @@ export default {
             .then(res => {
               this.charData = this.charData.concat(res.data.results);
               this.nextPage = res.data.info.next;
-              this.charDataStore.addValueToStore(this.charData, this.nextPage);
             })
-            .catch(function (error){
+            .catch(function (error) {
               console.log(error.response);
               alert("Wrong filter");
             })
@@ -107,7 +100,6 @@ export default {
       this.filterParams.status = document.getElementById("selectFilter").value;
       this.filtersStore.addValueToStore(document.getElementById("inputFilter").value,
         document.getElementById("selectFilter").value)
-      this.charDataStore.addValueToStore(this.charData, this.nextPage);
       this.getFirstCharacters();
     }
   },

@@ -1,7 +1,7 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import {defineNuxtConfig} from 'nuxt/config';
 
 export default defineNuxtConfig({
-  devtools: { enabled: false },
+  devtools: {enabled: true},
 
   css: ["@/assets/index.css"],
 
@@ -11,13 +11,13 @@ export default defineNuxtConfig({
     head: {
       title: "Rick and Morty",
       meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' },
-        { name: 'format-detection', content: 'telephone=no' },
+        {charset: 'utf-8'},
+        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+        {hid: 'description', name: 'description', content: ''},
+        {name: 'format-detection', content: 'telephone=no'},
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
       ],
       bodyAttrs: {
         class: 'body'

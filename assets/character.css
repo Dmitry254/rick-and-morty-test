@@ -1,4 +1,5 @@
 .singleCharCard {
+  margin-top: 1%;
   display: flex;
 }
 .singleCharImg {
