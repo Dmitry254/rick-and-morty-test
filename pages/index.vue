@@ -29,6 +29,8 @@
 
 <script>
 import axios from 'axios'
+import {useFiltersStore} from "@/store/filters.js";
+import {useCharDataStore} from "@/store/characters-data.js";
 
 export default {
   name: "index",
@@ -38,13 +40,22 @@ export default {
       firstPage: "https://rickandmortyapi.com/api/character/?page=1",
       nextPage: "",
       filterParams: {name: "", status: ""},
-      componentKey: 0
+      componentKey: 0,
+      filtersStore: useFiltersStore(),
+      charDataStore: useCharDataStore()
     }
   },
   beforeMount() {
+    console.log(this.filtersStore.status);
+    console.log(this.charDataStore.storeNextPage);
+    console.log(this.charDataStore.storeCharData);
+
     this.getFirstCharacters();
+
   },
   mounted() {
+    document.getElementById("inputFilter").value = this.filtersStore.name;
+    document.getElementById("selectFilter").value = this.filtersStore.status;
     this.getNextCharacters();
   },
   methods: {
@@ -53,8 +64,8 @@ export default {
         .get(this.firstPage, {params: this.filterParams})
         .then(res => {
           this.charData = res.data.results;
-          console.log(res);
           this.nextPage = res.data.info.next;
+          this.charDataStore.addValueToStore(this.charData, this.nextPage);
         })
         .catch(function (error){
           console.log(error.response);
@@ -72,9 +83,8 @@ export default {
             .get(this.nextPage, {params: this.filterParams})
             .then(res => {
               this.charData = this.charData.concat(res.data.results);
-              console.log(this.charData);
-              console.log(this.nextPage);
               this.nextPage = res.data.info.next;
+              this.charDataStore.addValueToStore(this.charData, this.nextPage);
             })
             .catch(function (error){
               console.log(error.response);
@@ -91,6 +101,9 @@ export default {
       this.nextPage = this.firstPage;
       this.filterParams.name = document.getElementById("inputFilter").value;
       this.filterParams.status = document.getElementById("selectFilter").value;
+      this.filtersStore.addValueToStore(document.getElementById("inputFilter").value,
+        document.getElementById("selectFilter").value)
+      this.charDataStore.addValueToStore(this.charData, this.nextPage);
       this.getFirstCharacters();
     }
   },

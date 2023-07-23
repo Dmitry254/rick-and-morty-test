@@ -9,11 +9,20 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
+    "@pinia/nuxt": "^0.4.11",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/compat": "^3.1.0",
     "axios": "^1.4.0",
     "core-js": "^3.25.3",
-    "nuxt": "^2.15.8",
-    "vue": "^2.7.10",
+    "pinia": "^2.1.4",
+    "vue": "^3.1.0",
+    "vue-loader": "^17.2.2",
     "vue-server-renderer": "^2.7.10",
     "vue-template-compiler": "^2.7.10"
+  },
+  "devDependencies": {
+    "@vue/compiler-sfc": "^3.1.0",
+    "nuxt": "^3.6.5"
   }
 }
