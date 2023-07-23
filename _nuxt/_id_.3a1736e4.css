@@ -1,0 +1,1 @@
+.singleCharCard{display:flex;margin-top:1%}.singleCharImg{width:500px}.singleCharBio{margin-left:2%}.charLocation,.charName,.charSpecies{font-size:40px}@media screen and (max-width:900px){.singleCharCard{display:block;text-align:center}.singleCharImg{width:80%}.singleCharBio{margin-left:2%}}
