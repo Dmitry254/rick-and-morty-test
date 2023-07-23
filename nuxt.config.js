@@ -8,6 +8,8 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@pinia-plugin-persistedstate/nuxt'],
 
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+
     head: {
       title: "Rick and Morty",
       meta: [

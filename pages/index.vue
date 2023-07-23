@@ -1,5 +1,6 @@
 <template>
   <div class="charactersMain">
+
     <div class="charactersFilter">
       <input id="inputFilter" class="inputFilter">
       <select id="selectFilter" class="selectFilter">
@@ -10,24 +11,29 @@
       </select>
       <button class="buttonFilter" @click="setFilters()">Search</button>
     </div>
+
     <div class="charCardsList" key="charCardsListKey">
       <template v-for="item in this?.charData">
         <div class="charCard">
+
           <NuxtLink class="charImg" :to="'/character/' + item.id">
             <img class="charImg" v-bind:src=item.image>
           </NuxtLink>
           <NuxtLink class="descriptionP" :to="'/character/' + item.id">{{ item.name }}</NuxtLink>
           <p class="descriptionP">{{ item.species }}</p>
           <p class="descriptionP">{{ item.location?.name }}</p>
+
           <div class="episodes">
             <p class="descriptionP">Episodes:</p>
             <template v-for="episode in item.episode.slice(0, 5)">
               <NuxtLink class="episodeNumbers" :to="'/episode/' + episode.slice(40)">{{ episode.slice(40) }}</NuxtLink>
             </template>
           </div>
+
         </div>
       </template>
     </div>
+
   </div>
 </template>
 

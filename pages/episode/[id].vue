@@ -1,9 +1,11 @@
 <template>
   <div class="episodeCard">
+
     <div class="episodeInfo">
       <p class="episodeName">Episode {{this?.$route.params.id}} - {{ this?.episodeData.name }}</p>
       <p class="episodeDate">Air date: {{ this?.episodeData.air_date }}</p>
     </div>
+
     <p class="episodeCharsTitle">Characters from the episode</p>
     <div class="episodeChars">
       <template v-for="item in this?.charactersData">
@@ -15,6 +17,7 @@
         </div>
       </template>
     </div>
+
   </div>
 </template>
 
