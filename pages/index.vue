@@ -72,8 +72,9 @@ export default {
           this.nextPage = res.data.info.next;
         })
         .catch(function (error) {
-          console.log(error.response);
-          alert("Wrong filter");
+          this.charData = [1];
+          this.nextPage = null;
+          this.forceRerender();
         })
     },
     getNextCharacters() {
@@ -90,8 +91,9 @@ export default {
               this.nextPage = res.data.info.next;
             })
             .catch(function (error) {
-              console.log(error.response);
-              alert("Wrong filter");
+              this.charData = [1];
+              this.nextPage = null;
+              this.forceRerender();
             })
           this.forceRerender();
         }
