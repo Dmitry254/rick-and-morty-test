@@ -40,22 +40,17 @@ export default {
   },
   methods: {
     getEpisodeInfo() {
-      console.log(this.$route)
       axios
         .get(this.episodeInfoLink + this.$route.params.id)
         .then(res => {
           this.episodeData = res.data;
-          console.log(res.data.characters);
           this.getCharactersInfo(res.data.characters);
         })
         .catch(function (error) {
-          console.log(error.response);
         })
     },
     getCharactersInfo(charactersList) {
       let charsId = [];
-      console.log(charactersList);
-      console.log(charactersList.length);
       for (let i = 0; i < charactersList.length; i++) {
         charsId.push(parseInt(charactersList[i].slice(42)));
       }
@@ -63,10 +58,8 @@ export default {
         .get(this.characterInfoLink + charsId)
         .then(res => {
           this.charactersData = res.data;
-          console.log(res);
         })
         .catch(function (error) {
-          console.log(error.response);
         })
     }
   }

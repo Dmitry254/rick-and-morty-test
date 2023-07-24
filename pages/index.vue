@@ -65,6 +65,7 @@ export default {
   },
   methods: {
     getFirstCharacters() {
+      let self = this;
       axios
         .get(this.firstPage, {params: this.filterParams})
         .then(res => {
@@ -72,12 +73,13 @@ export default {
           this.nextPage = res.data.info.next;
         })
         .catch(function (error) {
-          this.charData = [1];
-          this.nextPage = null;
-          this.forceRerender();
+          self.charData.length = 0;
+          self.nextPage = null;
+          self.forceRerender();
         })
     },
     getNextCharacters() {
+      let self = this;
       window.onscroll = () => {
         if (this.nextPage === null) {
           return;
@@ -91,9 +93,9 @@ export default {
               this.nextPage = res.data.info.next;
             })
             .catch(function (error) {
-              this.charData = [1];
-              this.nextPage = null;
-              this.forceRerender();
+              self.charData.length = 0;
+              self.nextPage = null;
+              self.forceRerender();
             })
           this.forceRerender();
         }

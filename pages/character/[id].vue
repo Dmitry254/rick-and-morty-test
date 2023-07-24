@@ -30,10 +30,8 @@ export default {
         .get(this.characterInfoLink + this.$route.params.id)
         .then(res => {
           this.charData = res.data;
-          console.log(res);
         })
         .catch(function (error){
-          console.log(error.response);
         })
     }
   },
